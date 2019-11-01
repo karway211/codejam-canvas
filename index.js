@@ -22,7 +22,7 @@ const getArrData4 = (url) => fetch(url)
     }
 })
 let bth4 = document.getElementById("bth-4");
-bth4.addEventListener('click', async () => {
+bth4.addEventListener('click', () => {
   getArrData4('https://raw.githubusercontent.com/karway211/codejam-canvas/gh-pages/assets/codejam/4x4.json')
 });
 
@@ -34,7 +34,6 @@ const getArrData32 = (url) => fetch(url)
     for(let i = 0; i < getArrData32.length; i++){
         arr.push(getArrData32[i]);
     } 
-    console.log(arr);
     for(let i = 0; i < arr.length; i++) {
         for(let j = 0; j < arr[1].length; j++) {
             ctx.beginPath();
@@ -48,8 +47,20 @@ const getArrData32 = (url) => fetch(url)
     }
 })
 let bth32 = document.getElementById("bth-32");
-bth32.addEventListener('click', async () => {
+bth32.addEventListener('click', () => {
   getArrData32('https://raw.githubusercontent.com/karway211/codejam-canvas/gh-pages/assets/codejam/32x32.json')
+});
+
+const getImage = (image) => {
+  let img = new Image();
+  img.src = image;
+  img.onload = () => {
+    ctx.drawImage(img, 0, 0, 512, 512);
+  }
+}
+let imgBth = document.getElementById('bth-image');
+imgBth.addEventListener('click', () => {
+  getImage('./assets/codejam/image.png');
 });
 
 
